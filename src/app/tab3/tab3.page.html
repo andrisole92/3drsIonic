@@ -1,9 +1,35 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-item lines="none">
+            <ion-avatar slot="start">
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            </ion-avatar>
+            <ion-label>Andrey R.</ion-label>
+        </ion-item>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content fullscreen class="ion-padding">
+  <ion-list>
+    <ion-list-header>
+      Account settings
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Personal Information</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="end" name="logo-ionic"></ion-icon>
+      <ion-label>Notifications</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-list>
+    <ion-list-header>
+      Hosting
+    </ion-list-header>
+    <ion-item>
+      <ion-label (click)="openYourPlaces()">List your space</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

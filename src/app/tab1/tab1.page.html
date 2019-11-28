@@ -1,15 +1,20 @@
 <ion-header>
     <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-menu-button autoHide="false"></ion-menu-button>
+        <!--        <ion-buttons slot="start">-->
+        <!--            <ion-menu-button autoHide="false"></ion-menu-button>-->
+        <!--        </ion-buttons>-->
+        <ion-buttons slot="secondary">
+            <ion-button (click)="openLocationSearch()">
+                <ion-icon slot="icon-only" name="search"></ion-icon>
+            </ion-button>
         </ion-buttons>
         <ion-title>
-            Tab One
+            Explore
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen class="ion-padding">
     <ion-card class="welcome-card" (click)="helloWorld()">
         <ion-slides pager="true">
             <ion-slide>

@@ -15,4 +15,9 @@ export class Tab1Page {
         console.log('hello world');
         this.router.navigateByUrl('/listing');
     }
+
+    openLocationSearch() {
+        console.log('hello world');
+        this.router.navigateByUrl('/location-selection');
+    }
 }
