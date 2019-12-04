@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>addListing</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form (ngSubmit)="submitForm()">
+        <ion-item>
+            <ion-label>Title</ion-label>
+            <ion-input type="text" [(ngModel)]="todo['title']" name="title" placeholder="Beautiful room"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Description</ion-label>
+            <ion-textarea [(ngModel)]="todo['description']" name="description"
+                          placeholder="Great location, shops nearby"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-label>Price (monthly)</ion-label>
+            <ion-input type="number" [(ngModel)]="todo['price']" name="price" placeholder="$800.00"></ion-input>
+        </ion-item>
+        <ion-button type="submit" shape="round" fill="outline">Add Todo</ion-button>
+    </form>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="primary">
+        <ion-buttons>
+            <ion-button (click)="presentActionSheet()">
+                Select Image
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

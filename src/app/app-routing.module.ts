@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'your-places',
     loadChildren: () => import('./your-places/your-places.module').then( m => m.YourPlacesPageModule)
+  },
+  {
+    path: 'add-listing',
+    loadChildren: () => import('./add-listing/add-listing.module').then( m => m.AddListingPageModule)
   }
 ];
 @NgModule({
