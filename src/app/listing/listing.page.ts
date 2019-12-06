@@ -7,6 +7,11 @@ import {Router} from '@angular/router';
     styleUrls: ['./listing.page.scss'],
 })
 export class ListingPage implements OnInit {
+    slideOpts = {
+        initialSlide: 1,
+        loop: true,
+        speed: 400
+    };
 
     constructor(private router: Router) {
     }
@@ -14,7 +19,11 @@ export class ListingPage implements OnInit {
     ngOnInit() {
     }
 
-    openGallery() {
-      this.router.navigateByUrl('/gallery');
+    async openGallery() {
+        await this.router.navigateByUrl('/gallery');
+    }
+
+    async openInquiryForm() {
+        await this.router.navigateByUrl('/inquiry-form');
     }
 }

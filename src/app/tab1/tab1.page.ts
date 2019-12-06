@@ -7,7 +7,11 @@ import {Router} from '@angular/router';
     styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-
+    slideOpts = {
+        initialSlide: 1,
+        loop: true,
+        speed: 400
+    };
     constructor(private router: Router) {
     }
 

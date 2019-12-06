@@ -4,8 +4,8 @@ import {Router} from '@angular/router';
 import {ActionSheetController, LoadingController, Platform, ToastController} from '@ionic/angular';
 import {Transfer} from '@ionic-native/transfer';
 import {FilePath} from '@ionic-native/file-path/ngx';
-import {Camera} from '@ionic-native/camera/ngx';
 import {FileOriginal} from '@ionic-native/file';
+import {Camera} from '@ionic-native/camera/ngx';
 
 declare var cordova: any;
 
@@ -15,22 +15,22 @@ declare var cordova: any;
     styleUrls: ['./add-listing.page.scss'],
 })
 export class AddListingPage implements OnInit {
-    private todo: FormGroup;
+    private listingForm: FormGroup;
     lastImage: string = null;
     loading: any;
 
     constructor(private formBuilder: FormBuilder,
                 public router: Router,
-                // private camera: Camera,
+                private camera: Camera,
                 // private transfer: Transfer,
                 // private file: FileOriginal,
                 // private filePath: FilePath,
                 public actionSheetCtrl: ActionSheetController,
-                // public toastCtrl: ToastController,
+                public toastCtrl: ToastController,
                 public platform: Platform,
                 // public loadingCtrl: LoadingController
     ) {
-        this.todo = this.formBuilder.group({
+        this.listingForm = this.formBuilder.group({
             title: ['', Validators.required],
             description: [''],
             price: ['', Validators.required],
@@ -40,8 +40,10 @@ export class AddListingPage implements OnInit {
     ngOnInit() {
     }
 
-    submitForm() {
+    async submitForm() {
         console.log('submitForm');
+        await this.presentToast('Success!');
+        await this.router.navigateByUrl('/listing');
     }
 
     async presentActionSheet() {
@@ -51,13 +53,13 @@ export class AddListingPage implements OnInit {
                 {
                     text: 'Load from Library',
                     handler: () => {
-                        // this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
+                        this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
                     }
                 },
                 {
                     text: 'Use Camera',
                     handler: () => {
-                        // this.takePicture(this.camera.PictureSourceType.CAMERA);
+                        this.takePicture(this.camera.PictureSourceType.CAMERA);
                     }
                 },
                 {
@@ -69,35 +71,35 @@ export class AddListingPage implements OnInit {
         await actionSheet.present();
     }
 
-    // public takePicture(sourceType) {
-    //     // Create options for the Camera Dialog
-    //     const options = {
-    //         quality: 100,
-    //         sourceType,
-    //         saveToPhotoAlbum: false,
-    //         correctOrientation: true
-    //     };
-    //
-    //     // Get the data of an image
-    //     this.camera.getPicture(options).then((imagePath) => {
-    //         let correctPath, currentName;
-    //         // Special handling for Android library
-    //         if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
-    //             this.filePath.resolveNativePath(imagePath)
-    //                 .then(filePath => {
-    //                     correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
-    //                     currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
-    //                     this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
-    //                 });
-    //         } else {
-    //             currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
-    //             correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
-    //             this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
-    //         }
-    //     }, (err) => {
-    //         this.presentToast('Error while selecting image.');
-    //     });
-    // }
+    public takePicture(sourceType) {
+        // Create options for the Camera Dialog
+        const options = {
+            quality: 100,
+            sourceType,
+            saveToPhotoAlbum: false,
+            correctOrientation: true
+        };
+
+        // Get the data of an image
+        this.camera.getPicture(options).then((imagePath) => {
+            // let correctPath, currentName;
+            // Special handling for Android library
+            // if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
+            //     this.filePath.resolveNativePath(imagePath)
+            //         .then(filePath => {
+            //             correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
+            //             currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+            //             this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+            //         });
+            // } else {
+            //     currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+            //     correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+            //     this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+            // }
+        }, (err) => {
+            this.presentToast('Error while selecting image.');
+        });
+    }
 
     // Create a new name for the image
 //     private createFileName() {
@@ -114,14 +116,15 @@ export class AddListingPage implements OnInit {
 //         });
 //     }
 //
-//     async presentToast(text) {
-//         const toast = await this.toastCtrl.create({
-//             message: text,
-//             duration: 3000,
-//             position: 'top'
-//         });
-//         toast.present();
-//     }
+    async presentToast(text) {
+        const toast = await this.toastCtrl.create({
+            message: text,
+            duration: 3000,
+            position: 'top'
+        });
+        await toast.present();
+    }
+
 //
 // // Always get the accurate path to your apps folder
 //     public pathForImage(img) {

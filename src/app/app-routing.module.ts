@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'add-listing',
     loadChildren: () => import('./add-listing/add-listing.module').then( m => m.AddListingPageModule)
+  },
+  {
+    path: 'inquiry-form',
+    loadChildren: () => import('./inquiry-form/inquiry-form.module').then( m => m.InquiryFormPageModule)
   }
 ];
 @NgModule({

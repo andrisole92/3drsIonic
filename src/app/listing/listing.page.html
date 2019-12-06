@@ -1,44 +1,52 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
-    </ion-buttons>
-    <ion-buttons slot="primary">
-      <ion-button color="secondary">
-        <ion-icon slot="icon-only" name="more"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title></ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="primary">
+            <ion-button color="secondary">
+                <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Nice and Shiny Condo</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-slides pager="true" (click)="openGallery()">
-    <ion-slide>
-      <img src="/assets/shapes.svg" alt=""/>
-    </ion-slide>
-    <ion-slide>
-      <img src="/assets/shapes.svg" alt=""/>
-    </ion-slide>
-    <ion-slide>
-      <img src="/assets/shapes.svg" alt=""/>
-    </ion-slide>
-  </ion-slides>
+    <ion-slides pager="true" (click)="openGallery()" [options]="slideOpts">
+        <ion-slide>
+            <img src="/assets/shapes.svg" alt=""/>
+        </ion-slide>
+        <ion-slide>
+            <img src="/assets/shapes.svg" alt=""/>
+        </ion-slide>
+        <ion-slide>
+            <img src="/assets/shapes.svg" alt=""/>
+        </ion-slide>
+    </ion-slides>
+    <div padding>
+        <h2>Nice and Shiny Condo</h2>
 
-  <h2>Nice and Shiny Condo</h2>
+        <div>
+            <div>
+                <p>Entire house</p>
+                <p>Hosted by: Tim Redis</p>
+            </div>
+        </div>
 
-  <div>
-    <div>
-      <p>Entire house</p>
-      <p>Hosted by: Tim Redis</p>
+        <div>
+            <b>About this home</b>
+            <p>Ths home has so many stuff in it. </p>
+        </div>
+        <!--  <div>-->
+        <!--    <ion-button expand="block" shape="round" fill="outline">Contact Now</ion-button>-->
+        <!--  </div>-->
     </div>
-  </div>
-
-  <div>
-    <b>About this home</b>
-    <p>Ths home has so many stuff in it.  </p>
-  </div>
-  <div>
-    <ion-button expand="block" shape="round" fill="outline">Contact Now</ion-button>
-  </div>
 </ion-content>
+<ion-footer>
+    <ion-toolbar color="primary">
+        <ion-buttons>
+            <ion-button expand="full" style="width: 100%;" (click)="openInquiryForm()">Inquire now</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

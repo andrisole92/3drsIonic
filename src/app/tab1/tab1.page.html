@@ -16,7 +16,7 @@
 
 <ion-content fullscreen class="ion-padding">
     <ion-card class="welcome-card" (click)="helloWorld()">
-        <ion-slides pager="true">
+        <ion-slides pager="true" [options]="slideOpts">
             <ion-slide>
                 <img src="/assets/shapes.svg" alt=""/>
             </ion-slide>
