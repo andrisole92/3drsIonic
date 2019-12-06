@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nice and Shiny Condo - Inquire</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="photos">
+    <div></div>
+  </div>
+  <form (ngSubmit)="submitForm()">
+    <ion-item>
+      <ion-label>Your Name</ion-label>
+      <ion-input type="text" [(ngModel)]="inquireForm['name']" name="title" placeholder="Beautiful room"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>E-mail</ion-label>
+      <ion-input type="text" [(ngModel)]="inquireForm['email']" name="title" placeholder="Beautiful room"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Phone number:</ion-label>
+      <ion-input type="text" [(ngModel)]="inquireForm['phone']" name="title" placeholder="Beautiful room"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Say something</ion-label>
+      <ion-textarea [(ngModel)]="inquireForm['i']" name="description"
+                    placeholder="Great location, shops nearby"></ion-textarea>
+    </ion-item>
+    <!--        <ion-button type="submit" shape="round" fill="outline">Add Todo</ion-button>-->
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-buttons>
+      <ion-button expand="full" style="width: 100%" (click)="submitForm()">
+        Send
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
